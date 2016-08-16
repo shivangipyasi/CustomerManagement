@@ -1,0 +1,25 @@
+<div class ="w3-container w3-card-3" style ="width:30%;float: left;margin:8px;">
+	<table class = "w3-table w3-white w3-border" >
+	<thead>
+		<tr class="w3-light-grey">
+		<th>Product</th>
+  		<th>Price</th>
+  		<th>Quantity</th>
+		<th>Order Total</th>
+		</tr>
+	</thead>	
+		<tr style="w3-dark-gray" ng-repeat="order in cust_order"  >
+		<td>{{order.product  }}</td>
+  		<td>{{order.Price | currency }}</td>
+  		<td>{{order.Qty  }}</td>
+		<td>{{order.OrderTotal | currency}}</td>
+		</tr>
+		<tr>
+		<td> Total : </td>
+  		<td>{{ cust_order | sumOfValue:'Price' | currency}}</td>
+  		<td>{{ cust_order | sumOfValue:'Qty' }}</td>
+		<td>{{ cust_order | OrderTotal:'Qty':'Price' | currency }}</td>
+		</tr>
+		
+	</table>
+</div>

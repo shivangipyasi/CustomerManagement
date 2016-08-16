@@ -1,0 +1,44 @@
+<div class="w3-container w3-section w3-card-0">
+  <div class="w3-quarter" style ="float: left;">
+    <input class="w3-input w3-col l11 w3-border" type="text" placeholder="First Name" ng-model=newCustomer.fname />
+  </div>
+  <div class="w3-quarter" style ="float: left;">
+    <input class="w3-input w3-col l11 w3-border" type="text" placeholder="Last Name" ng-model=newCustomer.lname />
+  </div>
+  <div class="w3-quarter" style ="float: left;">
+    <input class="w3-input w3-col l11 w3-border" type="text" placeholder="City" ng-model=newCustomer.city />
+  </div>
+  <div class="w3-quarter" style ="float: right">
+    <button class="w3-btn w3-col l5" ng-click = "addCustomer()" >Add Customer</button>
+  </div>
+</div>
+
+<div class ="w3-container w3-section">
+	Filter By Name : <input type = "text" placeholder="First and last name" ng-model=Name />
+</div>
+
+<div class ="w3-container w3-card-3"  >
+	<table class = "w3-table w3-white w3-border" ng-repeat="cust in customers | filter:Name | orderBy:'name'" style ="width:30%;float: left;margin:8px;" >
+		<tr class="w3-light-grey">
+		<th>First Name</th>
+  		<th>Last Name</th>
+  		<th>City<i style ="float:right;font-size:28px"class="fa fa-close"></i></th>
+		</tr>
+	</thead>	
+		<tr style="w3-dark-gray">
+		<td>{{cust.fname  }}</td>
+  		<td>{{cust.lname  }}</td>
+  		<td>{{cust.city}}</td>
+		</tr>
+		<tr style="w3-border w3-gray w3-theme-d5">
+		<td colspan="2" ><a href="#/customersList" style="text-decoration:none">
+		<i title="Remove Customer" class="material-icons w3-xlarge" ng-click="deleteCustomer(cust.id)">delete</i></a></td>
+		<td colspan="2" >
+		<a href="#/orders/:CustomerID?{{cust.id}}" style="text-decoration:none">
+		<i title="View Orders"class="material-icons" ng-click="getCustomer(cust.id)">description</i></a></td>
+		</tr>
+	</table>
+</div>
+
+
+
